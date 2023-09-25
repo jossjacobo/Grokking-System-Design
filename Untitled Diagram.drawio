@@ -1,9 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2023-09-25T15:21:02.433Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" version="21.7.5" etag="aqOtk6kw5ty7fdc1kdXU" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-25T17:55:13.679Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="VCZNBsM_2R-F9b7dofe-" version="21.7.5" type="github">
   <diagram name="Page-1" id="qBK1Ee0jKXNqwQDiL-o2">
-    <mxGraphModel>
+    <mxGraphModel dx="1234" dy="1157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="px_U8xJiQbBfxchhKDif-1" value="Requirements&lt;br&gt;* Given URL generate shorter and unique alias&lt;br&gt;* When short url is accessed, redirect to original url&lt;br&gt;* Users can optionally pick a custom url&lt;br&gt;* Links expire after a standard default time, users can specify expiration time&lt;br&gt;&lt;br&gt;Non-functional reqs&lt;br&gt;* Highly available system&lt;br&gt;* URL redirection happens in real-time, minimal latency&lt;br&gt;* Links are not guessable&lt;br&gt;&lt;br&gt;Nice to haves&lt;br&gt;* Analytics&lt;br&gt;* Accessible through REST API" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry width="430" height="210" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
