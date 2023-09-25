@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-09-25T18:18:07.554Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="pWHbno88UvbgDclzHJbd" version="21.7.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-25T19:42:33.123Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="nuWme0X4zGnFiHWOCu2t" version="21.7.5" type="github">
   <diagram name="Page-1" id="qBK1Ee0jKXNqwQDiL-o2">
-    <mxGraphModel dx="1234" dy="1157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1194" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -9,6 +9,72 @@
         </mxCell>
         <mxCell id="px_U8xJiQbBfxchhKDif-2" value="System API&lt;br&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;POST /url body: { apiDevKey: string, originalUrl: string, customAlias?: string, userName: string, expireDate: string }&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; RETURN { status: number, shortenUrlID, number, shortenedUrl: string} || Error code &amp;amp; message&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;DELETE /url body {apiDevKey: string, shortenUrlId: number}&lt;br&gt;&amp;nbsp; RETURN { status: number, message: string}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="500" width="630" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-3" value="Database Design&lt;br&gt;&lt;br&gt;Observations&lt;br&gt;* Need to store 1B records&lt;br&gt;* Each object is small (less than 1k)&lt;br&gt;* No relationships between records - besides URL original -&amp;gt; shortened&lt;br&gt;* Read-heavy&lt;br&gt;* A NoSQL choice would be easier to scale&lt;br&gt;&amp;nbsp; * Although SQL with sharding would still work&lt;br&gt;&lt;br&gt;Schema&lt;br&gt;&lt;br&gt;URL&lt;br&gt;hash: varchar(16)&lt;br&gt;original_url: varchar(512)&lt;br&gt;shortened_url: varchar(50)&lt;br&gt;creation_date: datetime&lt;br&gt;expiration_date: datetime&lt;br&gt;user_id: int&lt;br&gt;&lt;br&gt;User&lt;br&gt;name: varchar(20)&lt;br&gt;email: varchar(30)&lt;br&gt;creation_date: datetime&lt;br&gt;last_login: datetime" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="500" y="160" width="400" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-5" target="px_U8xJiQbBfxchhKDif-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-5" value="Client" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-6" target="px_U8xJiQbBfxchhKDif-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-6" target="px_U8xJiQbBfxchhKDif-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-6" value="URL Shorten Service" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-8" target="px_U8xJiQbBfxchhKDif-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-8" value="Hash/Key Generation" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-12" value="Database" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="860" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-14" value="KeyDB" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="860" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-16" target="px_U8xJiQbBfxchhKDif-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-16" value="Client" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="710" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-17" target="px_U8xJiQbBfxchhKDif-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-17" value="LB" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="710" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-19" target="px_U8xJiQbBfxchhKDif-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-19" value="API Layer" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-21" target="px_U8xJiQbBfxchhKDif-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-21" target="px_U8xJiQbBfxchhKDif-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-21" value="LB" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="710" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-23" value="DB" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="710" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-30" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.213;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="px_U8xJiQbBfxchhKDif-28" target="px_U8xJiQbBfxchhKDif-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="px_U8xJiQbBfxchhKDif-28" value="Cache" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="560" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
